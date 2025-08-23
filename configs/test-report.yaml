@@ -1,0 +1,121 @@
+# BindDiff 测试报告配置文件
+# 用于自定义测试报告的生成选项
+
+# 报告基本信息
+report:
+  project_name: "BindDiff"
+  version: "2.0.0"
+  description: "高性能二进制差异分析工具"
+  
+# 输出设置
+output:
+  directory: "test-reports"
+  formats:
+    - html
+    - json
+    # - xml  # 可选格式
+  timestamp_format: "%Y%m%d_%H%M%S"
+  
+# 测试配置
+testing:
+  # 单元测试设置
+  unit_tests:
+    enabled: true
+    verbose: true
+    timeout: "10m"
+    packages:
+      - "./test/config"
+      - "./test/core"
+      - "./test/integration"
+    
+  # 覆盖率设置
+  coverage:
+    enabled: true
+    mode: "atomic"
+    threshold: 70  # 最低覆盖率要求 (百分比)
+    exclude_patterns:
+      - "*.pb.go"
+      - "*_mock.go"
+      - "test/*"
+    
+  # 基准测试设置
+  benchmark:
+    enabled: true
+    count: 3
+    timeout: "30m"
+    memory_profile: true
+    cpu_profile: true
+    
+  # 性能分析设置
+  profiling:
+    enabled: false  # 默认关闭，按需开启
+    cpu_profile: true
+    memory_profile: true
+    trace_profile: false
+
+# 报告内容配置
+content:
+  # HTML报告设置
+  html:
+    title: "BindDiff 测试报告"
+    theme: "modern"  # modern, classic, minimal
+    include_charts: true
+    include_source_links: false
+    
+  # 包含的测试信息
+  sections:
+    summary: true
+    test_results: true
+    coverage: true
+    benchmarks: true
+    performance: false  # 性能分析图表
+    
+  # 统计信息
+  metrics:
+    test_count: true
+    pass_rate: true
+    coverage_rate: true
+    execution_time: true
+    memory_usage: true
+    
+# 通知设置
+notifications:
+  # 失败时的通知 (预留功能)
+  on_failure:
+    enabled: false
+    webhook_url: ""
+    
+  # 成功时的通知 (预留功能)  
+  on_success:
+    enabled: false
+    webhook_url: ""
+
+# 集成设置
+integration:
+  # CI/CD 集成
+  ci_mode: false
+  exit_on_failure: true
+  
+  # 文件清理
+  cleanup:
+    temp_files: true
+    old_reports: false  # 保留历史报告
+    max_reports: 10    # 最多保留报告数量
+
+# 高级设置
+advanced:
+  # 并行执行
+  parallel:
+    enabled: true
+    workers: 4
+    
+  # 缓存设置
+  cache:
+    enabled: true
+    test_cache: true
+    
+  # 调试选项
+  debug:
+    enabled: false
+    verbose_logging: false
+    save_raw_output: false
