@@ -69,7 +69,7 @@ go run main.go
 
 ### 基本命令
 
-BindDiff 提供两个主要命令：
+BinDiff 提供两个主要命令：
 
 #### 1. 生成差分补丁
 
@@ -119,7 +119,7 @@ bdiff apply old.exe update.bdf
 
 ### 1. FFT 对齐算法
 
-BindDiff 使用 FFT 算法计算两个文件的最佳对齐偏移量：
+BinDiff 使用 FFT 算法计算两个文件的最佳对齐偏移量：
 
 ```mermaid
 graph TB
